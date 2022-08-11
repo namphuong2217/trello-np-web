@@ -1,0 +1,24 @@
+@import '_settings.scss';
+
+.board-content {
+  display: flex;
+  margin: 0 $gap $gap; // top 0 bottom gap left,right gap
+  // dynamically show scrollbar among ALL card columns
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    // -webkit-appearance: none;
+    appearance: none;
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    margin-top: $gap;
+    height: 11px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $common-element-bg;
+    border-radius: 5px $list-bg-color solid;
+  }
+  
+}

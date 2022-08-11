@@ -1,0 +1,84 @@
+@import '_settings.scss';
+
+$column-header-height: 36px;
+$column-footer-height: 36px;
+$column-border-radius: 5px;
+$card-border-radius: 3px;
+
+.column {
+  flex: 0 0 auto;
+  width: 300px;
+  height: calc(100% - #{$gap});
+  
+  // separate all card columns
+  &:not(:first-child) {
+    margin-left: $gap;
+  }
+
+  > * {
+    background-color: $list-bg-color;
+    color: #333;
+    padding: 0px 8px;
+  }
+
+  header {
+    padding-left: 15px;
+    height: $column-header-height;
+    line-height: $column-header-height;
+    font-weight: bold;
+    font-size: 16px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  footer {
+    padding-left: 15px;
+    height: $column-footer-height;
+    line-height: $column-footer-height;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom-left-radius: $column-border-radius;
+    border-bottom-right-radius: $column-border-radius;
+  }
+
+  ul.task-list {
+    list-style-type: none;
+    margin: 0;
+    // dynamically show scrollbar in one card column
+    max-height: calc(100% - #{$column-header-height - $column-footer-height});
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+      -webkit-appearance: none;
+      // appearance: none;
+    }
+
+    &::-webkit-scrollbar:vertical{
+      width: 11px;
+    }
+
+    &::-webkit-scrollbar-thumb{
+      background-color: darken($list-bg-color, 15);
+      border-right: 5px $list-bg-color solid;
+    }
+
+    // li.task-item {
+    //   background-color: white;
+    //   padding: $gap;
+    //   border-radius: $card-border-radius;
+    //   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    //   &:not(:last-child){
+    //     margin-bottom: $gap;
+    //   }
+
+    //   img {
+    //     display: block;
+    //     width: calc(100% + 2* #{$gap});
+    //     // width: 100%;
+    //     margin: -$gap 0 $gap (-$gap);
+    //     border-top-left-radius: $card-border-radius;
+    //     border-top-right-radius: $card-border-radius;
+    //   }
+    // }
+  }
+}
