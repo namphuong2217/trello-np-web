@@ -41,7 +41,7 @@ $card-border-radius: 3px;
     border-bottom-right-radius: $column-border-radius;
   }
 
-  ul.task-list {
+  ul.card-list {
     list-style-type: none;
     margin: 0;
     // dynamically show scrollbar in one card column
@@ -62,7 +62,7 @@ $card-border-radius: 3px;
       border-right: 5px $list-bg-color solid;
     }
 
-    // li.task-item {
+    // li.card-item {
     //   background-color: white;
     //   padding: $gap;
     //   border-radius: $card-border-radius;
