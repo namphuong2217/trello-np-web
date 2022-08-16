@@ -1,10 +1,12 @@
 @import '_settings.scss';
 
 .board-content {
-  display: flex;
-  margin: 0 $gap $gap; // top 0 bottom gap left,right gap
+  height: $board-content-height;
+  // display: flex;
+  // margin: 0 $gap $gap; // top 0 bottom gap left,right gap
   // dynamically show scrollbar among ALL card columns
   overflow-x: auto;
+  overflow-y: hidden; // hide largest vertical scrollbar ( on the right )
 
   &::-webkit-scrollbar {
     // -webkit-appearance: none;
@@ -19,6 +21,12 @@
   &::-webkit-scrollbar-thumb {
     background-color: $common-element-bg;
     border-radius: 5px $list-bg-color solid;
+  }
+
+  .column-drop-preview {
+    background-color: rgba(150, 150, 200, 0.1);
+    border: 1px dashed #abc;
+    margin: 5px;
   }
   
 }
