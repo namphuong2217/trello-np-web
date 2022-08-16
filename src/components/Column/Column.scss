@@ -1,19 +1,24 @@
 @import '_settings.scss';
 
-$column-header-height: 36px;
-$column-footer-height: 36px;
+$column-header-height: 46px;
+$column-footer-height: 46px;
 $column-border-radius: 5px;
+
 $card-border-radius: 3px;
+
+$column-height: calc(#{$board-content-height} - #{$gap * 2});
 
 .column {
   flex: 0 0 auto;
   width: 300px;
-  height: calc(100% - #{$gap});
+  height: $column-height;
   
   // separate all card columns
-  &:not(:first-child) {
-    margin-left: $gap;
-  }
+  // &:not(:first-child) {
+  //   margin-left: $gap;
+  // }
+
+  margin-left: $gap;
 
   > * {
     background-color: $list-bg-color;
@@ -21,7 +26,8 @@ $card-border-radius: 3px;
     padding: 0px 8px;
   }
 
-  header {
+  header.column-drag-handle {
+    cursor: pointer;
     padding-left: 15px;
     height: $column-header-height;
     line-height: $column-header-height;
@@ -41,11 +47,11 @@ $card-border-radius: 3px;
     border-bottom-right-radius: $column-border-radius;
   }
 
-  ul.card-list {
-    list-style-type: none;
+  .card-list {
     margin: 0;
     // dynamically show scrollbar in one card column
-    max-height: calc(100% - #{$column-header-height - $column-footer-height});
+    max-height: calc(#{$column-height} - #{$column-header-height} - #{$column-footer-height});
+    // max-height: calc(#{$column-height} - 96px);
     overflow-y: scroll;
 
     &::-webkit-scrollbar{
@@ -62,6 +68,28 @@ $card-border-radius: 3px;
       border-right: 5px $list-bg-color solid;
     }
 
+    .card-ghost {
+      transition: transform 0.18s ease;
+      transform: rotateZ(5deg)
+    }
+    
+    .card-ghost-drop{
+      transition: transform 0.18s ease-in-out;
+      transform: rotateZ(0deg)
+    }
+
+    .card-drop-preview {
+      background-color: rgba(150, 150, 200, 0.1);
+      border: 1px dashed #abc;
+      margin: 5px;
+    }
+    
+    // .cards-drop-preview {
+    //   background-color: rgba(150, 150, 200, 0.1);
+    //   border: 1px dashed #abc;
+    //   margin: 5px 45px 5px 5px;
+    // }
+    
     // li.card-item {
     //   background-color: white;
     //   padding: $gap;
